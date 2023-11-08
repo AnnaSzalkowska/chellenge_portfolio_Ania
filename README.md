@@ -7,4 +7,12 @@ Duższy czas temu zaczynając tworzyć aplikacje od strony wizualnej (skończył
 Interesuję się testowaniem manualnym, ale bardzo chcę zrozumieć proces testowania automatycznego.   
 Czuję, że rzucam się trochę na głęboką wodę, ale powrót do systematycznej nauki i nowe wyzwania dobrze mi zrobią 😊 
 
-### Anna Szałkowska 
+### &nbsp; Anna Szałkowska 
+
+
+&nbsp;
+
+&nbsp;
+
+### Zadanie dla chętnych. Nie samymi testami automatycznymi człowiek żyje
+## &nbsp; &nbsp; &nbsp; 8 punktów 

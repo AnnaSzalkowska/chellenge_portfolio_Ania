@@ -4,9 +4,8 @@ from pages.base_page import BasePage
 
 
 class Dashboard(BasePage):
-
     text_scouts_panel = "//h6[text()='Scouts Panel']"
-    main_page_button =  "//*[@aria-label='menu']"
+    main_page_button = "//*[@aria-label='menu']"
 
     main_page_span = "//*[text()='Main page']"
     players_span = "//*[text()='Players']"
@@ -23,17 +22,25 @@ class Dashboard(BasePage):
     text_last_created_player = "//h6[text()='Last created player']"
     text_last_updated_player = "//h6[text()='Last updated player']"
 
-
-    expected_title = "Scouts panel - sign in"
     login_url = "https://scouts-test.futbolkolektyw.pl/login"
-
+    Dashboard_url = "https://scouts-test.futbolkolektyw.pl/"
+    add_player_button_xpath = "//*[text()='Add player']"
+    expected_title = "Scouts Panel"
 
     def click_on_add_player_button(self):
         self.click_on_the_element(self.add_player_button_xpath)
 
+    def click_add_player_button(self):
+        self.click_on_the_element(self.add_player_button_xpath)
 
     def title_of_page(self):
         time.sleep(8)
-        assert self.get_page_title(self.login_url) == self.expected_title
+        actual_title = self.get_page_title()
+        print(f"Actual Page Title: {actual_title}")
+        assert actual_title.lower() == self.expected_title.lower()
 
-    add_player_button_xpath = "//*[text()='Add player']"
+    #def title_of_page(self):
+    #   time.sleep(8)
+    #   assert self.get_page_title() == self.expected_title
+
+

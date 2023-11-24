@@ -9,7 +9,6 @@ from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
 class TestLoginPage(unittest.TestCase):
-
     driver = None
 
     @classmethod
@@ -31,12 +30,10 @@ class TestLoginPage(unittest.TestCase):
         dashboard_page.title_of_page()
         time.sleep(5)
 
-
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome()
         cls.driver.get('https://scouts-test.futbolkolektyw.pl/login')
-
 
     def test_assert_element_text(self):
         xpath = "//*[text()='Scouts Panel']"
@@ -46,8 +43,3 @@ class TestLoginPage(unittest.TestCase):
         element_text = element.text
 
         assert expected_text == element_text, f"Expected text: {expected_text}, Actual text: {element_text}"
-
-if __name__ == "__main__":
-    unittest.main()
-
-

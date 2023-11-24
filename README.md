@@ -19,7 +19,7 @@ ___
 **Scotus_Panel**
 * //*[text()="Scouts Panel"]  
 * //*[@id="__next"]/form/div/div[1]/h5  
-* //h5   `nie wiem czy nie za malo konkretny 😅 `  
+* //h5  
 * //h5[@class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"]  
 
 **Login_Label**  

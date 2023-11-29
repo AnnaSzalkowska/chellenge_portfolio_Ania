@@ -31,6 +31,7 @@ class Dashboard(BasePage):
         test_title = "Scouts Panel"
         assert test_title == self.expected_title
 
-    def click_on_the_add_player_button(self):
+    def click_add_player_button(self):
         self.click_on_the_element(self.add_player_button_xpath)
+
 

@@ -1,4 +1,4 @@
-from pages.base_page import BasePage
+from pages.base_page import BasePage, assert_element_text
 
 
 class LoginPage(BasePage):
@@ -20,8 +20,9 @@ class LoginPage(BasePage):
         self.click_on_the_element(self.sign_in_button_xpath)
 
     def title_of_the_page(self):
-        assert self.get_page_title() == self.expected_title
+        self.get_page_title()
+        assert self.expected_title == self.get_page_title()
 
-    def check_header(self):
-        self.assert_elemet_text(self.driver, self.header_page_title_xpath)
+    def check_title_of_page(self):
+        assert_element_text(self.driver, self.header_page_title_xpath, self.expected_header)
 

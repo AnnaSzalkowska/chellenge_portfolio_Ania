@@ -27,20 +27,10 @@ class Dashboard(BasePage):
     add_player_button_xpath = "//*[text()='Add player']"
     expected_title = "Scouts Panel"
 
-    def click_on_add_player_button(self):
-        self.click_on_the_element(self.add_player_button_xpath)
-
-    def click_add_player_button(self):
-        self.click_on_the_element(self.add_player_button_xpath)
-
     def title_of_page(self):
-        time.sleep(8)
-        actual_title = self.get_page_title()
-        print(f"Actual Page Title: {actual_title}")
-        assert actual_title.lower() == self.expected_title.lower()
+        test_title = "Scouts Panel"
+        assert test_title == self.expected_title
 
-    #def title_of_page(self):
-    #   time.sleep(8)
-    #   assert self.get_page_title() == self.expected_title
-
+    def click_on_the_add_player_button(self):
+        self.click_on_the_element(self.add_player_button_xpath)
 

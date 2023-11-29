@@ -1,19 +1,17 @@
 import os
 import unittest
+
 from selenium import webdriver
-import time
+from selenium.common import WebDriverException
 
 from pages.dashboard import Dashboard
 from pages.login_page import LoginPage
+from pages.add_a_match_form import AddaMatchForm
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
 class AddaPlayer(unittest.TestCase):
     driver = None
-    add_player_button_xpath = "//*[text()='Add player']"
-    expected_title = "Scouts Panel"
-    page_title = 'https://scouts-test.futbolkolektyw.pl/en'
-
     @classmethod
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
@@ -28,8 +26,23 @@ class AddaPlayer(unittest.TestCase):
         user_login.type_in_email('user03@getnada.com')
         user_login.type_in_password('Test-1234')
         user_login.click_on_the_sign_in_button()
-        time.sleep(5)
         dashboard_page = Dashboard(self.driver)
         dashboard_page.click_add_player_button()
-        time.sleep(5)
-        self.driver.quit()
+        add_match_form = AddaMatchForm(self.driver)
+        add_match_form.click_add_language_button()
+        add_match_form.type_in_language('Polish')
+        add_match_form.click_add_language_button()
+
+        max_clicks = 0  # Initialize max_clicks before entering the loop
+
+        try:
+            while True:
+                add_match_form.click_add_language_button()
+                max_clicks += 1
+        except WebDriverException:
+            # Exception occurred, break out of the loop
+
+            # Print or assert the result
+            print(f"Maximum number of successful clicks: {max_clicks}")
+
+        # Continue with the rest of your test logic...

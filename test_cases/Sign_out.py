@@ -1,4 +1,5 @@
 import os
+import time
 import unittest
 
 from selenium import webdriver
@@ -8,7 +9,7 @@ from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class TestLoginPage(unittest.TestCase):
+class TestSignOut(unittest.TestCase):
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
         self.driver = webdriver.Chrome()
@@ -24,5 +25,8 @@ class TestLoginPage(unittest.TestCase):
         user_login.type_in_password('Test-1234')
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_page()
+        dashboard_page.click_sign_out_button()
+        user_login.test_url_match()
         self.driver.quit()
+
+

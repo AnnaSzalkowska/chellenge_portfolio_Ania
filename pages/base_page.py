@@ -23,6 +23,7 @@ class BasePage():
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, timeout=10)
 
     def field_send_keys(self, selector, value, locator_type=By.XPATH):
         return self.driver.find_element(locator_type, selector).send_keys(value)
@@ -32,5 +33,8 @@ class BasePage():
 
     def get_page_title(self):
         return self.driver.title
+
+    def find_element_by_xpath(self, xpath):
+        return self.wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
 
 

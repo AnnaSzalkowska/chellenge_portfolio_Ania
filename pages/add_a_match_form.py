@@ -30,6 +30,7 @@ class AddaMatchForm(BasePage):
     right_leg_button_xpath = "//*[text()= 'Right leg']"
     main_position_field_xpath = "//*[@name= 'mainPosition']"
     submit_button_xpath = "//*[text()= 'Submit']"
+    new_player_button_xpath = "//*[text() = 'Players']"
 
 
     def click_add_language_button(self):
@@ -68,3 +69,5 @@ class AddaMatchForm(BasePage):
     def text_in_main_position_field(self, position):
         self.field_send_keys(self.main_position_field_xpath, position)
 
+    def click_new_player_button(self):
+        self.click_on_the_element(self.new_player_button_xpath)

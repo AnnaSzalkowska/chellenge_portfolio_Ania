@@ -20,7 +20,7 @@ class AddaPlayer(unittest.TestCase):
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
-    def test_log_in_to_the_system(self):
+    def test_language_button(self):
         user_login = LoginPage(self.driver)
         user_login.title_of_the_page()
         user_login.type_in_email('user03@getnada.com')
@@ -33,7 +33,7 @@ class AddaPlayer(unittest.TestCase):
         add_match_form.type_in_language('Polish')
         add_match_form.click_add_language_button()
 
-        max_clicks = 0  # Initialize max_clicks before entering the loop
+        max_clicks = 3000  # Initialize max_clicks before entering the loop
 
         try:
             while True:

@@ -17,7 +17,7 @@ class TestSignOut(unittest.TestCase):
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
-    def test_sign_out(self):
+    def test_change_language_to_polish(self):
         user_login = LoginPage(self.driver)
         user_login.title_of_the_page()
         user_login.check_title_of_page()
@@ -25,8 +25,8 @@ class TestSignOut(unittest.TestCase):
         user_login.type_in_password('Test-1234')
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.click_sign_out_button()
-        user_login.test_url_match()
+        old_url = self.driver.current_url
+        dashboard_page.click_change_language_button()
+        dashboard_page.wait_for_url_change(old_url)
+        dashboard_page.text_in_polish()
         self.driver.quit()
-
-

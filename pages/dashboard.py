@@ -1,6 +1,9 @@
 import time
 
+from selenium.webdriver.support.wait import WebDriverWait
+
 from pages.base_page import BasePage
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Dashboard(BasePage):
@@ -27,6 +30,9 @@ class Dashboard(BasePage):
     add_player_button_xpath = "//*[text()='Add player']"
     expected_title = "Scouts Panel"
     add_language_xpath = "//*[text()='Add language']"
+    change_language_to_polish_xpath = "//*[text() = 'Polski']"
+    text_in_polish_xpath = "//*[text() = 'Linki pomocnicze']"
+    expected_text = 'Linki pomocnicze'
 
     def title_of_page(self):
         test_title = "Scouts Panel"
@@ -37,3 +43,18 @@ class Dashboard(BasePage):
 
     def click_sign_out_button(self):
         self.click_on_the_element(self.sign_out_button_xpath)
+
+    def click_change_language_button(self):
+        self.click_on_the_element((self.change_language_to_polish_xpath))
+
+    def get_text_from_element(self, xpath):
+        element = self.find_element_by_xpath(xpath)
+        return element.text if element else None
+
+    def wait_for_url_change(self, old_url):
+        timeout = 10
+        WebDriverWait(self.driver, timeout).until(EC.url_changes(old_url))
+
+    def text_in_polish(self):
+        actual_text = self.get_text_from_element(self.text_in_polish_xpath)
+        assert actual_text == self.expected_text, f"Expected text: {self.expected_text}, Actual text: {actual_text}"

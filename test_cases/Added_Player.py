@@ -1,17 +1,19 @@
 import os
 import unittest
-
+import time
+from selenium.webdriver.support import expected_conditions as EC  # Poprawiony import
 from selenium import webdriver
 from selenium.common import WebDriverException
+from selenium.webdriver.support.ui import WebDriverWait
 
 from pages.dashboard import Dashboard
 from pages.login_page import LoginPage
 from pages.add_a_match_form import AddaMatchForm
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
-
 class AddaPlayer(unittest.TestCase):
     driver = None
+
     @classmethod
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
@@ -42,25 +44,20 @@ class AddaPlayer(unittest.TestCase):
         add_match_form.click_right_leg_button()
         add_match_form.text_in_main_position_field('Junior')
         add_match_form.click_submit_button()
+        add_match_form.click_new_player_button()
+        old_url = self.driver.current_url
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.url_changes(old_url))
+        current_url = self.driver.current_url
+        print(f"Current URL: {current_url}")
+        add_match_form.click_new_player_button()
+        expected_url = 'https://scouts-test.futbolkolektyw.pl/en/players'
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.url_to_be(expected_url))
+
+        current_url = self.driver.current_url
+        print(f"Current URL: {current_url}")
+        time.sleep(7)
         self.driver.quit()
-
-
-
-
-     #   max_clicks = 0
-
-       ### try:
-           # while True:
-          ##      add_match_form.click_add_language_button()
-           #     max_clicks += 1
-      #3  except WebDriverException:
-
-          #  pass
-
-        # Print or assert the result
-      #  print(f"Maximum number of successful clicks: {max_clicks}")
-
-
-
-
-
+        time.sleep(7)
+        self.driver.quit()

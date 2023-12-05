@@ -8,7 +8,7 @@ from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class AddaPlayer(unittest.TestCase):
+class TestAddaPlayer(unittest.TestCase):
     driver = None
     add_player_button_xpath = "//*[text()='Add player']"
     expected_title = "Scouts Panel"

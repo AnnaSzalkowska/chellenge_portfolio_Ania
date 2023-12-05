@@ -10,7 +10,7 @@ from pages.add_a_match_form import AddaMatchForm
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class AddaPlayer(unittest.TestCase):
+class TestAddNewPlayer(unittest.TestCase):
     driver = None
     @classmethod
     def setUp(self):
@@ -20,7 +20,7 @@ class AddaPlayer(unittest.TestCase):
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
-    def test_add_new_player(self):
+    def test_log_in_and_add_new_player(self):
         user_login = LoginPage(self.driver)
         user_login.title_of_the_page()
         user_login.type_in_email('user03@getnada.com')

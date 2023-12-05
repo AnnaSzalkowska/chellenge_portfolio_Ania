@@ -10,7 +10,7 @@ from pages.add_a_match_form import AddaMatchForm
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class AddaPlayer(unittest.TestCase):
+class TestLanguageButton(unittest.TestCase):
     driver = None
     @classmethod
     def setUp(self):
@@ -33,16 +33,16 @@ class AddaPlayer(unittest.TestCase):
         add_match_form.type_in_language('Polish')
         add_match_form.click_add_language_button()
 
-        max_clicks = 3000  # Initialize max_clicks before entering the loop
+        max_clicks = 30
+        current_clicks = 0
 
         try:
-            while True:
+            while current_clicks < max_clicks:
                 add_match_form.click_add_language_button()
-                max_clicks += 1
+                current_clicks += 1
         except WebDriverException:
-            # Exception occurred, break out of the loop
+            print(f"Maximum number of successful clicks: {current_clicks}")
+            self.fail("Test failed. Maximum number of clicks reached.")
 
-            # Print or assert the result
-            print(f"Maximum number of successful clicks: {max_clicks}")
-
-        # Continue with the rest of your test logic...
+    if __name__ == '__main__':
+        unittest.main()

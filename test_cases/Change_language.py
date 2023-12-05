@@ -9,7 +9,7 @@ from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class TestSignOut(unittest.TestCase):
+class TestChangeLanguage(unittest.TestCase):
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
         self.driver = webdriver.Chrome()
